@@ -1,0 +1,280 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+      "title" : "Sistem Monitoring PDU RESTful API",
+      "version": "1",
+      "description": "OpenAPI for Sistem Monitoring PDU"
+  },
+  "servers": [
+      {
+      "url": "http://localhost:3000"
+  }
+  ],
+  "paths": {
+      "/well":{
+          "get": {
+            "tags": [
+              "well"
+            ],
+            "summary": "Get all well",
+            "description": "Get all well",
+            "responses": {
+              "200": {
+                "description": "Succsess get well data",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/ArrayWell"
+                    },
+                    "example": {
+                      "message": "success",
+                      "result": 
+                        [
+                          {
+                            "id": "1",
+                            "wellName": "Well A",
+                            "officeName": "PT PDU",
+                            "Date-Time": "2023-06-02 00:00:00.0",
+                            "BitDepth(m)": "86",
+                            "Scfm": "0",
+                            "MudCondIn(mmho)": "",
+                            "BlockPos(m)": "3",
+                            "WOB(klb)": "0",
+                            "ROPi(m/hr)": "0",
+                            "BVDepth(m)": "86",
+                            "MudCondOut(mmho)": "",
+                            "Torque(klb.ft)": "0",
+                            "RPM": "0",
+                            "Hkld(klb)": "60",
+                            "LogDepth(m)": "1562",
+                            "H2S_1(m)": "0",
+                            "MudFlowOutp": "76",
+                            "TotSPM": "145",
+                            "SpPress(psi)": "2044",
+                            "MudFlowIn(gpm)": "690",
+                            "CO2_1(%)": "0",
+                            "Gas(%)": "",
+                            "MudTempIn(°C)": "25",
+                            "MudTempOut(°C)": "28",
+                            "TankVolTot(bbl)": "1293"
+                        },
+                        {
+                            "id": "2",
+                            "wellName": "Well A",
+                            "officeName": "PT PDU",
+                            "Date-Time": "2023-06-02 00:00:10.0",
+                            "BitDepth(m)": "86",
+                            "Scfm": "0",
+                            "MudCondIn(mmho)": "",
+                            "BlockPos(m)": "3",
+                            "WOB(klb)": "0",
+                            "ROPi(m/hr)": "0",
+                            "BVDepth(m)": "86",
+                            "MudCondOut(mmho)": "",
+                            "Torque(klb.ft)": "0",
+                            "RPM": "0",
+                            "Hkld(klb)": "60",
+                            "LogDepth(m)": "1562",
+                            "H2S_1(m)": "0",
+                            "MudFlowOutp": "75",
+                            "TotSPM": "151",
+                            "SpPress(psi)": "2244",
+                            "MudFlowIn(gpm)": "718",
+                            "CO2_1(%)": "0",
+                            "Gas(%)": "",
+                            "MudTempIn(°C)": "25",
+                            "MudTempOut(°C)": "28",
+                            "TankVolTot(bbl)": "1269"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "parameters": [
+              {
+                "name": "wellName",
+                "description": "Search well by name",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "officeName",
+                "description": "Search well by office",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              },
+              {
+                "name": "Date-Time",
+                "description": "Search well by date",
+                "required": false,
+                "in": "query",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "post": {
+            "tags": [
+              "well"
+            ],
+            "summary": "Post well data",
+            "description": "Post well data",
+            "requestBody": {
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                      "$ref": "#/components/schemas/Well"
+                  }
+                }
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Success create well data",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "$ref": "#/components/schemas/Well"
+                    },
+                    "example": {
+                      "message": "success",
+                      "result": {
+                        "id": "2",
+                        "wellName": "Well A",
+                        "officeName": "PT PDU",
+                        "Date-Time": "2023-06-02 00:00:10.0",
+                        "BitDepth(m)": "86",
+                        "Scfm": "0",
+                        "MudCondIn(mmho)": "",
+                        "BlockPos(m)": "3",
+                        "WOB(klb)": "0",
+                        "ROPi(m/hr)": "0",
+                        "BVDepth(m)": "86",
+                        "MudCondOut(mmho)": "",
+                        "Torque(klb.ft)": "0",
+                        "RPM": "0",
+                        "Hkld(klb)": "60",
+                        "LogDepth(m)": "1562",
+                        "H2S_1(m)": "0",
+                        "MudFlowOutp": "75",
+                        "TotSPM": "151",
+                        "SpPress(psi)": "2244",
+                        "MudFlowIn(gpm)": "718",
+                        "CO2_1(%)": "0",
+                        "Gas(%)": "",
+                        "MudTempIn(°C)": "25",
+                        "MudTempOut(°C)": "28",
+                        "TankVolTot(bbl)": "1269"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+          }
+      }
+  },
+  "components": {
+    "schemas": {
+      "Well": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "wellName": {
+            "type": "string"
+          },
+          "officeName": {
+            "type": "string"
+          },
+          "Date-Time": {
+            "type": "string"
+          },
+          "BitDepth(m)": {
+            "type": "string"
+          },
+          "Scfm": {
+            "type": "string"
+          },
+          "MudCondIn(mmho)": {
+            "type": "string"
+          },
+          "BlockPos(m)": {
+            "type": "string"
+          },
+          "WOB(klb)": {
+            "type": "string"
+          },
+          "ROPi(m/hr)": {
+            "type": "string"
+          },
+          "BVDepth(m)": {
+            "type": "string"
+          },
+          "MudCondOut(mmho)": {
+            "type": "string"
+          },
+          "Torque(klb.ft)": {
+            "type": "string"
+          },
+          "RPM": {
+            "type": "string"
+          },
+          "Hkld(klb)": {
+            "type": "string"
+          },
+          "LogDepth(m)": {
+            "type": "string"
+          },
+          "H2S_1(m)": {
+            "type": "string"
+          },
+          "MudFlowOutp": {
+            "type": "string"
+          },
+          "TotSPM": {
+            "type": "string"
+          },
+          "SpPress(psi)": {
+            "type": "string"
+          },
+          "MudFlowIn(gpm)": {
+            
+          },
+          "CO2_1(%)": {
+            
+          },
+          "Gas(%)": {
+            "type": "string"
+          },
+          "MudTempIn(°C)": {
+            "type": "string"
+          },
+          "MudTempOut(°C)": {
+            "type": "string"
+          },
+          "TankVolTot(bbl)": {
+            "type": "string"
+          }
+        }
+      },
+      "ArrayWell": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Well"
+      }
+      }
+    }
+  }
+}
